@@ -1,14 +1,4 @@
-PEP_URLS = 'https://peps.python.org/'
+from pathlib import Path
 
-EXPECTED_STATUS = {
-    'Active': 0,
-    'Accepted': 0,
-    'Deferred': 0,
-    'Final': 0,
-    'Provisional': 0,
-    'Rejected': 0,
-    'Superseded': 0,
-    'Withdrawn': 0,
-    'Draft': 0,
-    'April Fool!': 0
-}
+PEP_URLS = 'https://peps.python.org/'
+BASE_DIR = Path(__file__).resolve().parent.parent / 'results'

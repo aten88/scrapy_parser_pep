@@ -8,12 +8,11 @@ ROBOTSTXT_OBEY = True
 FEEDS = {
     'results/pep_%(time)s.csv': {
         'format': 'csv',
-        'fields': ['name', 'number', 'status'],
+        'fields': ['number', 'name', 'status'],
         'overwrite': True
     },
-    # 'pep_statuses_count.csv': {
-    #     'format': 'csv',
-    #     'fields': ['status'],
-    #     'overwrite': True
-    # },
+}
+
+ITEM_PIPELINES = {
+    'pep_parse.pipelines.PepParsePipeline': 100,
 }

@@ -1,33 +1,26 @@
-АСИНХРОННЫЙ ПАРСЕР ДОКУМЕНТОВ PEP
+# Асинхронный Парсер Документов PEP
 
-ОПИСАНИЕ:
-Парсер, собирающий информацию о статусах PEP их количества с сайта https://www.python.org/
+Этот парсер собирает информацию о статусах PEP и их количестве с [сайта Python](https://www.python.org/), сохраняя всю собранную информацию в файлы CSV.
 
-Вся собранная информация сохраняется в файлы csv:
-pep:
-  - Информация о PEP: номер, статус, автор-(ы).
-status_summary:
-  - Количество каждого статуса + общая сумма всех статусов TOTAL.
+## Описание
 
-Технологии которые применялись в создании проекта
-Python;
-Scrapy.
+Парсер собирает следующую информацию:
+- **pep**: Информация о PEP, включая номер, статус и авторов.
+- **status_summary**: Количество каждого статуса и общая сумма всех статусов TOTAL.
 
-Запуск парсера
-Склонируйте проект:
-git clone git@github.com:aten88/scrapy_parser_pep.git
+## Технологии
 
-Установите и активируйте виртуальное окружение:
-python -m venv venv
-(windows) source venv/Scripts/activate
-(linux/macos) source venv/bin/activate
+Этот проект создан с использованием Python и фреймворка Scrapy.
 
-Обновите пакетный менеджер PIP и установите зависимости:
-python.exe -m pip install --upgrade pip
-python -r requirements.txt
+## Установка и Запуск
 
-Запуск парсера:
-В терминале введите команду: scrapy crawl pep
+1. Клонируйте проект: `git clone git@github.com:aten88/scrapy_parser_pep.git`
+2. Создайте и активируйте виртуальное окружение:
+   - Windows: `python -m venv venv` и `venv\Scripts\activate`
+   - Linux/MacOS: `python -m venv venv` и `source venv/bin/activate`
+3. Обновите pip и установите зависимости: `python -m pip install --upgrade pip && pip install -r requirements.txt`
+4. Запуск парсера: `scrapy crawl pep`
 
-АВТОР:
-Алексей Тен
+## Автор
+
+**Алексей Тен**

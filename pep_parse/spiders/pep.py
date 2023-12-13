@@ -1,14 +1,14 @@
 import scrapy
 import re
 
-from pep_parse.constants import PEP_URLS
+from pep_parse.constants import PEP_URLS, PEP_DOMAIN
 from pep_parse.items import PepParseItem
 
 
 class PepSpider(scrapy.Spider):
     """ Паук-парсер PEP """
     name = 'pep'
-    allowed_domains = ['peps.python.org']
+    allowed_domains = [PEP_DOMAIN]
     start_urls = [PEP_URLS]
 
     def parse(self, response):

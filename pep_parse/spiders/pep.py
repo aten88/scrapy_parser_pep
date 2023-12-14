@@ -16,7 +16,7 @@ class PepSpider(scrapy.Spider):
         all_peps = response.css('section#numerical-index table tbody tr')
         for href_pep in all_peps:
             pep_link = (
-                f'https://{response.url.split("//")[-1]}'
+                f'{response.url}'
                 f'{href_pep.css("td a.pep::attr(href)").get()}'
             )
             yield response.follow(pep_link, callback=self.parse_pep)

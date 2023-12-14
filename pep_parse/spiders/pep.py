@@ -1,7 +1,7 @@
 import scrapy
 import re
 
-from pep_parse.constants import PEP_URLS, PEP_DOMAIN
+from pep_parse.constants import PEP_DOMAIN
 from pep_parse.items import PepParseItem
 
 
@@ -9,14 +9,14 @@ class PepSpider(scrapy.Spider):
     """ Паук-парсер PEP """
     name = 'pep'
     allowed_domains = PEP_DOMAIN
-    start_urls = PEP_URLS
+    start_urls = [f'https://{domain}/' for domain in PEP_DOMAIN]
 
     def parse(self, response):
         """ Метод парсинга ссылок PEP """
         all_peps = response.css('section#numerical-index table tbody tr')
         for href_pep in all_peps:
             pep_link = (
-                f'{PEP_URLS[0]}'
+                f'https://{response.url.split("//")[-1]}'
                 f'{href_pep.css("td a.pep::attr(href)").get()}'
             )
             yield response.follow(pep_link, callback=self.parse_pep)

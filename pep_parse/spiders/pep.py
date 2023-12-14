@@ -8,14 +8,17 @@ from pep_parse.items import PepParseItem
 class PepSpider(scrapy.Spider):
     """ Паук-парсер PEP """
     name = 'pep'
-    allowed_domains = [PEP_DOMAIN]
-    start_urls = [PEP_URLS]
+    allowed_domains = PEP_DOMAIN
+    start_urls = PEP_URLS
 
     def parse(self, response):
         """ Метод парсинга ссылок PEP """
         all_peps = response.css('section#numerical-index table tbody tr')
         for href_pep in all_peps:
-            pep_link = PEP_URLS + href_pep.css('td a.pep::attr(href)').get()
+            pep_link = (
+                f'{PEP_URLS[0]}'
+                f'{href_pep.css("td a.pep::attr(href)").get()}'
+            )
             yield response.follow(pep_link, callback=self.parse_pep)
 
     def parse_pep(self, response):
